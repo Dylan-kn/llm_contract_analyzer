@@ -1,0 +1,6 @@
+Django
+openai
+python-dotenv
+python-docx
+pdfplumber
+PyMuPDF
