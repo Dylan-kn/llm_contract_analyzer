@@ -8,7 +8,7 @@ class Contract(models.Model):
     summary = models.TextField(blank=True)
     key_info = models.TextField(blank=True)
     red_flags = models.TextField(blank=True)
-
-def__str__(self):
+    
+def __str__(self):
     return f"Contract {self.id} - {self.uploaded_at.date()}"
 
