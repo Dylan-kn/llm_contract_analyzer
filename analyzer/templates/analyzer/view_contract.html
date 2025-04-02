@@ -1,0 +1,24 @@
+{% extends "analyzer/base.html" %}
+
+{% block title %}Contract Details{% endblock %}
+
+{% block content %}
+<div class="card shadow p-4 mb-4">
+    <h2 class="mb-3">Extracted Text</h2>
+    <pre class="p-3 bg-body-secondary border rounded overflow-auto" style="max-height: 500px;">{{ contract.raw_text }}</pre>
+</div>
+<div class="card shadow p-4 mb-4">
+    <h2 class="mb-3">Summary</h2>
+    <p>{{ contract.summary }}</p>
+</div>
+<div class="card-shadow p-4 mb-4">
+    <h2 class="mb-3">Key Info</h2>
+    <p>{{ contract.key_info }}</p>
+</div>
+<div class="card shadow p-4 mb-4">
+    <h2 class="mb-3">Potential Red Flags</h2>
+    <p>{{ contract.red_flags }}</p>
+</div>
+
+<a href="/" class="btn btn-secondary">Upload Another Contract</a>
+{% endblock %}

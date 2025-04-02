@@ -1,0 +1,17 @@
+{% extends "analyzer/base.html" %}
+
+{% block title %}Upload Contract{% endblock %}
+
+{% block content %}
+    <div class="card shadow p-4">
+        <h2 class="mb-4">Upload a Contract</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.file.label_tag }}
+                {{ form.file }}
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+{% endblock %}
