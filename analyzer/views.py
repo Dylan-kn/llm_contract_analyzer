@@ -3,6 +3,8 @@ from .forms import ContractUploadForm, QuestionForm
 from .models import Contract
 from .utils import extract_text_from_file
 from .llm import summarize, extract_key_info, red_flags, generate_title, answer_question
+from django.template.loader import render_to_string
+from django.http import HttpResponse
 import os
 
 def upload_contract(request):
@@ -50,3 +52,17 @@ def delete_contract(request, pk):
         contract.delete()
         return redirect('contract_list')
     return render(request, 'analyzer/delete_confirmation.html', {'contract': contract})
+
+def ask_question(request, pk):
+    contract = get_object_or_404(Contract, pk=pk)
+
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.cleaned_data['question']
+            answer = answer_question(contract.raw_text, question)
+
+            html = render_to_string('analyzer/partials/answer.html', {'answer': answer})
+            return HttpResponse(html)
+        
+    return HttpResponse("error", status=400)

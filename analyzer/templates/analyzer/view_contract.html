@@ -23,19 +23,15 @@
     <div class="card shadow mb-4">
         <div class="card-header bg-light text-dark">Ask a Question</div>
         <div class="card-body">
-            <form method="POST">
+            <form method="POST" hx-post="{% url 'ask_question' contract.pk %}" hx-target="#qa-response" hx-swap="innerHTML">
                 {% csrf_token %}
                 <div class="mb-3">
                     {{ form.question }}
                 </div>
                 <button type="submit" class="btn btn-secondary">Ask</button>
             </form>
-
-            {% if answer %}
-                <hr>
-                <h6 class="mt-3">Answer:</h6>
-                <p>{{ answer }}</p>
-            {% endif %}
+            
+            <div id="qa-response"></div>
         </div>
     </div>
 
