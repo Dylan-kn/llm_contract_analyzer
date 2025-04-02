@@ -45,8 +45,7 @@ def generate_title(contract_text):
     return call_llm(prompt)
 
 def answer_question(contract_text, user_question):
-    prompt = f"""You are a legal assistant that answers questions about contracts. You are helping users in a clear, concise
-    and informative manner. Answer the following question based on the provided 
+    prompt = f"""Answer the following question based on the provided 
     contract text:
     {contract_text}
 

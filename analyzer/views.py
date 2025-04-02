@@ -26,21 +26,11 @@ def upload_contract(request):
     
 def view_contract(request, pk):
     contract = get_object_or_404(Contract, pk=pk)
-    answer = None
-
-    if request.method == "POST":
-        form = QuestionForm(request.POST)
-        if form.is_valid():
-            question = form.cleaned_data['question']
-            answer = answer_question(contract.raw_text, question)
-    else:
-        form = QuestionForm()
-
+    form = QuestionForm()
     return render(request, 'analyzer/view_contract.html', {
         'contract': contract,
-        'form': form,
-        'answer': answer
-        })
+        'form': form
+    })
 
 def contract_list(request):
     contracts = Contract.objects.all().order_by('-uploaded_at')
