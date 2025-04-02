@@ -43,3 +43,16 @@ def generate_title(contract_text):
     prompt = f"""Generate a title for the following contract based on its content. 
     Should be short, descriptive and no more than 8 words:\n\n{contract_text}"""
     return call_llm(prompt)
+
+def answer_question(contract_text, user_question):
+    prompt = f"""You are a legal assistant that answers questions about contracts. You are helping users in a clear, concise
+    and informative manner. Answer the following question based on the provided 
+    contract text:
+    {contract_text}
+
+    Question: "{user_question}"
+
+    Answer in plain english, clearly and directly"""
+
+    return call_llm(prompt)
+

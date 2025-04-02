@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ContractUploadForm
+from .forms import ContractUploadForm, QuestionForm
 from .models import Contract
 from .utils import extract_text_from_file
-from .llm import summarize, extract_key_info, red_flags, generate_title
+from .llm import summarize, extract_key_info, red_flags, generate_title, answer_question
 import os
 
 def upload_contract(request):
@@ -23,8 +23,22 @@ def upload_contract(request):
     return render(request, 'analyzer/upload_contract.html', {'form': form})
     
 def view_contract(request, pk):
-    contract = Contract.objects.get(pk=pk)
-    return render(request, 'analyzer/view_contract.html', {'contract': contract})
+    contract = get_object_or_404(Contract, pk=pk)
+    answer = None
+
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.cleaned_data['question']
+            answer = answer_question(contract.raw_text, question)
+    else:
+        form = QuestionForm()
+
+    return render(request, 'analyzer/view_contract.html', {
+        'contract': contract,
+        'form': form,
+        'answer': answer
+        })
 
 def contract_list(request):
     contracts = Contract.objects.all().order_by('-uploaded_at')
