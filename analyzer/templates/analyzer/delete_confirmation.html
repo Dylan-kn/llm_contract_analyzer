@@ -1,0 +1,15 @@
+{% extends 'analyzer/base.html' %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<div class="card shadow p-4">
+    <h2>Delete Contract {{ contract.id }}</h2>
+    <p>Delete this contract? Action can't be undone.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">Delete</button>
+        <a href="{% url 'view_contract' contract.pk %}" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}

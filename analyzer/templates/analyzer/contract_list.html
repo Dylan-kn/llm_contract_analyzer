@@ -1,0 +1,27 @@
+{% extends 'analyzer/base.html' %}
+
+{% block title %}All Contracts{% endblock %}
+
+{% block content %}
+<div class="mx-auto" style="max-width: 600px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>All Uploaded Contracts</h2>
+        <a href="/" class="btn btn-primary">Upload New Contract</a>
+    </div>
+
+    {% if contracts %}
+        <ul class="list-group shadow-sm">
+            {% for contract in contracts %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ contract.title|default:"Untitled Contract" }}</strong>
+                </div>
+                <a href="{% url 'view_contract' contract.pk %}" class="btn btn-sm btn-outline-secondary">View</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No contracts uploaded yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

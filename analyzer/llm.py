@@ -38,3 +38,8 @@ def red_flags(contract_text):
     risky, out-of-the-ordinary, potentially harmful details or clauses that might be 
     concerning for the average person. Be specific, explain why, and provide insight:\n\n{contract_text}"""
     return call_llm(prompt)
+
+def generate_title(contract_text):
+    prompt = f"""Generate a title for the following contract based on its content. 
+    Should be short, descriptive and no more than 8 words:\n\n{contract_text}"""
+    return call_llm(prompt)
