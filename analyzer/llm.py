@@ -1,12 +1,13 @@
 import os
-import openai
-from dotenv import load_dotenv
+from openai import OpenAI
+from dotenv import load_dotenv, find_dotenv
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI()
 
-def call_llm(prompt, model='gpt-4-turbo'):
-    response = openai.ChatCompletion.create(
+
+def call_llm(prompt, model='gpt-3.5-turbo'):
+    response = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": "You are a vital legal assistant that summarizes, analyzes and extracts key information for non-lawyers."},
@@ -14,7 +15,7 @@ def call_llm(prompt, model='gpt-4-turbo'):
         ],
         temperature=0.3
     )
-    return response['choices'][0]['message']['content'].strip()
+    return response.choices[0].message.content.strip()
 
 def summarize(contract_text):
     prompt = f"Summarize the following contract in plain english:\n\n{contract_text}"
