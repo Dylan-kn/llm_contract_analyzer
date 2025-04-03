@@ -8,8 +8,11 @@
 - Let users ask live questions and get simple, clear responses 
 
 ## Live Demo 
-Live demo here: 
-Currently has a few sample contracts to showcase functionality 
+Live demo here: https://llm-contract-analyzer.onrender.com/
+You can try these sample contracts, or feel free to upload your own:
+- [Sample Contract](contracts/sample_contract.pdf)
+- [Sample NDA](contracts/sample_nda.pdf)
+- [Freelance Contract](contracts/freelance_contract.docx)
 
 ## Features
 
