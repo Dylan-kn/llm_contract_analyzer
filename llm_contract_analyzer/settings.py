@@ -126,7 +126,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_FILES_DIRS = [os.path.join(BASE_DIR, 'analyzer', 'static')]
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'analyzer', 'templates')]
 
 load_dotenv()

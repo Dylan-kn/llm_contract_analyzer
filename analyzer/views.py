@@ -56,3 +56,7 @@ def ask_question(request, pk):
             return HttpResponse(html)
         
     return HttpResponse("error", status=400)
+
+def landing_page(request):
+    return render(request, 'analyzer/landing_page.html')
+

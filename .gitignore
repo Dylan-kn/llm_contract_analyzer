@@ -1,2 +1,11 @@
 .env
+.venv/
 contracts/
+
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.log
+
+db.sqlite3

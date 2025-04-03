@@ -1,0 +1,46 @@
+{% extends 'analyzer/base.html' %}
+
+{% block title %}AI Contract Analyzer{% endblock %}
+
+{% block content %}
+<div class="mx-auto text-center" style="max-width: 800px; padding-top: 3rem; padding-bottom: 5rem;">
+    <h1 class="display-4 mb-3">AI-Powered Contract Analysis</h1>
+    <p class="lead mb-4">Upload a contract and let AI summarize it, extract key info, highlight risk flags, and answer any questions — all in plain English.</p>
+    
+    <a href="{% url 'upload_contract' %}" class="btn btn-lg mb-3" style="background-color: #4c705d; color: white; border: none;">Try the Demo</a>
+
+    <div>
+        <a href="https://github.com/Dylan-kn/llm_contract_analyzer" target="_blank" class="btn btn-outline-secondary">View Source Code on GitHub</a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Upload a Contract</h5>
+                    <p class="card-text">Upload contracts in PDF, DOCX, and TXT format.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Understand</h5>
+                    <p class="card-text">Get a simple summary, key clauses, and potential risk factors.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Ask Anything</h5>
+                    <p class="card-text">Ask questions about your contract and receive custom AI responses.</p>
+                </div>
+            </div>
+        </div>
+
+    <div class="mt-5 text-muted">
+        <p><strong>Built with:</strong> Python - Django - OpenAI API - Bootstrap - HTMX</p>
+    </div>
+</div>
+{% endblock %}

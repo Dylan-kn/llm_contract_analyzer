@@ -34,9 +34,11 @@ def extract_key_info(contract_text):
     return call_llm(prompt)
 
 def red_flags(contract_text):
-    prompt = f"""Analyze the following contract and highlight any suspicious, vague, 
+    prompt = f"""Analyze the following contract. If it contains any suspicious, vague, 
     risky, out-of-the-ordinary, potentially harmful details or clauses that might be 
-    concerning for the average person. Be specific, explain why, and provide insight:\n\n{contract_text}"""
+    concerning for the average person, highlight them. Be specific, explain why, and provide insight. If 
+    the contract seems fair and contains no major red flags, say so clearly. Do not invent issues, but
+    flag them if they exist:\n\n{contract_text}"""
     return call_llm(prompt)
 
 def generate_title(contract_text):
