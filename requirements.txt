@@ -4,3 +4,4 @@ python-dotenv
 python-docx
 pdfplumber
 PyMuPDF
+gunicorn
