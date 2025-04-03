@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-q8x5b+xp55h%ki+j(bm8h9f1l#p2+efb-0mweu=!gpzx6!gcrb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['llm-contract-analyzer.onrender.com']
 
 
 # Application definition
